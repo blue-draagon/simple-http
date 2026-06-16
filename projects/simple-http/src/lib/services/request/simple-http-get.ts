@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs';
 import { BaseHttp, SimpleModel } from '../base/base-http';
 
-export class SimpleHttpGet<Entity> extends BaseHttp<Entity> {
+export class SimpleHttpGet<Entity> extends BaseHttp {
 
   constructor(config: SimpleModel) {
     super();

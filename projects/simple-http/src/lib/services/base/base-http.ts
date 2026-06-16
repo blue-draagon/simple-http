@@ -1,11 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { SimpleBaseService } from './simple-base-service';
 
-export class BaseHttp<Entity> extends SimpleBaseService {
+export class BaseHttp extends SimpleBaseService {
   protected http!: HttpClient;
-  protected host: string = '';
-  protected service: string = '';
-  protected endpoint: string = '';
+  protected host = '';
+  protected service = '';
+  protected endpoint = '';
 
   constructor() {
     super();
@@ -35,14 +35,14 @@ export class BaseHttp<Entity> extends SimpleBaseService {
   }
 
   protected getService(): string {
-    return this.slash(this.service)
+    return this.slash(this.service);
   }
 
   protected getEndpoint(): string {
-    return this.slash(this.endpoint)
+    return this.slash(this.endpoint);
   }
 
-  protected init<Entity>(params: SimpleModel) {
+  protected init(params: SimpleModel) {
     this.setHttp(params.http);
     this.setHost(params.host);
     this.setService(params.service ?? '');
@@ -51,8 +51,8 @@ export class BaseHttp<Entity> extends SimpleBaseService {
 }
 
 export interface SimpleModel {
-  http: HttpClient,
-  host: string,
-  service?: string,
-  endpoint?: string
+  http: HttpClient;
+  host: string;
+  service?: string;
+  endpoint?: string;
 }

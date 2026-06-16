@@ -69,6 +69,12 @@
         },
         "test": {
           "builder": "@angular/build:unit-test"
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": ["projects/simple-http/**/*.ts", "projects/simple-http/**/*.html"]
+          }
         }
       }
     },
@@ -94,6 +100,13 @@
           "builder": "@angular/build:unit-test",
           "options": {
             "tsConfig": "projects/simple-http/tsconfig.spec.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": ["projects/simple-http/**/*.ts", "projects/simple-http/**/*.html"],
+            "eslintConfig": "projects/simple-http/eslint.config.js"
           }
         }
       }

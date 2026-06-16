@@ -1,31 +1,15 @@
 export class SimplePersist<Entity> {
-  /**
-   * key of the content to persist in local storage
-   * @protected contentKey: string
-   */
-  protected contentKey: string = '';
-  /**
-   * key in local storage for time the content expire
-   * @protected expireKey: string
-   */
-  protected expireKey: string = '';
+  protected contentKey = '';
+  protected expireKey = '';
 
   private timeoutKey(): string {
     return '_' + this.expireKey;
   }
 
-  /**
-   * Value of variable
-   * @protected content: any
-   */
   protected content: Entity | null = null;
-  /**
-   * expire time in minute
-   * @protected expire: number
-   */
-  protected expire: number = 0;
+  protected expire = 0;
 
-  private timeout: number = 0;
+  private timeout = 0;
 
   constructor(content_key?: string, expire_key?: string) {
     this.contentKey = content_key ?? '';
@@ -57,12 +41,12 @@ export class SimplePersist<Entity> {
     return this;
   }
 
-  public loadLocal(): any {
+  public loadLocal(): Entity | null {
     const content: string | null = localStorage.getItem(this.contentKey);
     const expire: string | null = localStorage.getItem(this.expireKey);
     const timeout: string | null = localStorage.getItem(this.timeoutKey());
     if (content != null) {
-      this.content = JSON.parse(atob(content));
+      this.content = JSON.parse(atob(content)) as Entity;
     }
     if (expire != null) {
       this.expire = +expire;
