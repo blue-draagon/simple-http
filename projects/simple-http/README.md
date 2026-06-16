@@ -1,64 +1,59 @@
-# SimpleHttpComponent
+# _sneveil/simple-http
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.0.
+[![npm version](https://img.shields.io/npm/v/_sneveil/simple-http.svg)](https://www.npmjs.com/package/_sneveil/simple-http)
+[![CI](https://github.com/sneveil/simple-http/actions/workflows/ci.yml/badge.svg)](https://github.com/sneveil/simple-http/actions/workflows/ci.yml)
+[![npm downloads](https://img.shields.io/npm/dm/_sneveil/simple-http.svg)](https://www.npmjs.com/package/_sneveil/simple-http)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## Code scaffolding
+A simple Angular library for managing HTTP calls to an API, including loading, error handling, and request management, all managed by a single object.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Installation
 
-```bash
-ng generate component component-name
-```
+\`\`\`bash
+npm install _sneveil/simple-http
+\`\`\`
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Prérequis
 
-```bash
-ng generate --help
-```
+- Angular >= 17.0.0
+- RxJS >= 7.0.0
 
-## Building
+## Utilisation rapide
 
-To build the library, run:
+\`\`\`typescript
+import { SimpleHttpModule } from '_sneveil/simple-http';
 
-```bash
-ng build simple-http
-```
+@NgModule({
+  imports: [SimpleHttpModule.forRoot({ baseUrl: 'https://api.example.com' })]
+})
+export class AppModule {}
+\`\`\`
 
-This command will compile your project, and the build artifacts will be placed in the `dist/` directory.
+## API
 
-### Publishing the Library
+| Méthode | Description |
+|---------|-------------|
+| `get(url, options?)` | Requête GET avec retry automatique |
+| `post(url, body, options?)` | Requête POST |
+| `put(url, body, options?)` | Requête PUT |
+| `delete(url, options?)` | Requête DELETE |
 
-Once the project is built, you can publish your library by following these steps:
+## Configuration
 
-1. Navigate to the `dist` directory:
+| Option | Type | Défaut | Description |
+|--------|------|--------|-------------|
+| `baseUrl` | `string` | `''` | URL de base de l'API |
+| `retryCount` | `number` | `3` | Nombre de tentatives |
+| `cacheEnabled` | `boolean` | `false` | Active le cache des GET |
 
-   ```bash
-   cd dist/simple-http
-   ```
+## Contribuer
 
-2. Run the `npm publish` command to publish your library to the npm registry:
-   ```bash
-   npm publish
-   ```
+Voir [CONTRIBUTING.md](./CONTRIBUTING.md). Ce projet suit [Conventional Commits](https://www.conventionalcommits.org/).
 
-## Running unit tests
+## Changelog
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+Voir [CHANGELOG.md](./CHANGELOG.md).
 
-```bash
-ng test
-```
+## Licence
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+MIT © Sneveil

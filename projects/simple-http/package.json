@@ -1,5 +1,5 @@
 {
-  "name": "@sneveil/simple-http",
+  "name": "_sneveil/simple-http",
   "version": "0.1.0",
   "description": "A simple Angular library for managing HTTP calls to an API, including loading, error handling, and request management, all managed by a single object.",
   "keywords": [
@@ -11,7 +11,7 @@
     "sneveil",
     "simple"
   ],
-  "author": "@sneveil",
+  "author": "_sneveil",
   "peerDependencies": {
     "@angular/common": "^17.0.0",
     "@angular/core": "^17.0.0",
