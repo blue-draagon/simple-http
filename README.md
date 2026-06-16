@@ -1,59 +1,59 @@
-# SimpleHttpWorkspace
+# @sneveil/simple-http
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.13.
+[![npm version](https://img.shields.io/npm/v/@sneveil/simple-http.svg)](https://www.npmjs.com/package/@sneveil/simple-http)
+[![CI](https://github.com/sneveil/simple-http/actions/workflows/ci.yml/badge.svg)](https://github.com/sneveil/simple-http/actions/workflows/ci.yml)
+[![npm downloads](https://img.shields.io/npm/dm/@sneveil/simple-http.svg)](https://www.npmjs.com/package/@sneveil/simple-http)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## Development server
+A simple Angular library for managing HTTP calls to an API, including loading, error handling, and request management, all managed by a single object.
 
-To start a local development server, run:
+## Installation
 
-```bash
-ng serve
-```
+\`\`\`bash
+npm install @sneveil/simple-http
+\`\`\`
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Prérequis
 
-## Code scaffolding
+- Angular >= 17.0.0
+- RxJS >= 7.0.0
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Utilisation rapide
 
-```bash
-ng generate component component-name
-```
+\`\`\`typescript
+import { SimpleHttpModule } from '@sneveil/simple-http';
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+@NgModule({
+  imports: [SimpleHttpModule.forRoot({ baseUrl: 'https://api.example.com' })]
+})
+export class AppModule {}
+\`\`\`
 
-```bash
-ng generate --help
-```
+## API
 
-## Building
+| Méthode | Description |
+|---------|-------------|
+| `get(url, options?)` | Requête GET avec retry automatique |
+| `post(url, body, options?)` | Requête POST |
+| `put(url, body, options?)` | Requête PUT |
+| `delete(url, options?)` | Requête DELETE |
 
-To build the project run:
+## Configuration
 
-```bash
-ng build
-```
+| Option | Type | Défaut | Description |
+|--------|------|--------|-------------|
+| `baseUrl` | `string` | `''` | URL de base de l'API |
+| `retryCount` | `number` | `3` | Nombre de tentatives |
+| `cacheEnabled` | `boolean` | `false` | Active le cache des GET |
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## Contribuer
 
-## Running unit tests
+Voir [CONTRIBUTING.md](./CONTRIBUTING.md). Ce projet suit [Conventional Commits](https://www.conventionalcommits.org/).
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+## Changelog
 
-```bash
-ng test
-```
+Voir [CHANGELOG.md](./CHANGELOG.md).
 
-## Running end-to-end tests
+## Licence
 
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+MIT © Sneveil
