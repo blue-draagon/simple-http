@@ -1,0 +1,27 @@
+{
+  "name": "@sneveil/simple-http",
+  "version": "0.1.0",
+  "description": "A simple Angular library for managing HTTP calls to an API, including loading, error handling, and request management, all managed by a single object.",
+  "keywords": [
+    "angular",
+    "http",
+    "http-client",
+    "api",
+    "rest-api",
+    "sneveil",
+    "simple"
+  ],
+  "author": "@sneveil",
+  "peerDependencies": {
+    "@angular/common": "^17.0.0",
+    "@angular/core": "^17.0.0",
+    "rxjs": ">=7.0.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  }
+}
