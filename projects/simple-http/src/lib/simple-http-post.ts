@@ -1,5 +1,5 @@
 import {Observable} from 'rxjs';
-import { BaseHttp, SimpleModel } from '../base/base-http';
+import { BaseHttp, SimpleModel } from './base-http';
 
 export class SimpleHttpPost<Entity> extends BaseHttp {
 

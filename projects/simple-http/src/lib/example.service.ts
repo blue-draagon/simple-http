@@ -1,12 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { SimpleHttp } from './request/simple-http';
-import { SimpleHttpList } from './request/simple-http-list';
-import { SimpleHttpGet } from './request/simple-http-get';
-import { SimpleHttpDelete } from './request/simple-http-delete';
-import { SimpleHttpPatch } from './request/simple-http-patch';
-import { SimpleHttpPut } from './request/simple-http-put';
-import { SimpleHttpPost } from './request/simple-http-post';
+import { SimpleHttp } from './simple-http';
+import { SimpleHttpList } from './simple-http-list';
+import { SimpleHttpGet } from './simple-http-get';
+import { SimpleHttpDelete } from './simple-http-delete';
+import { SimpleHttpPatch } from './simple-http-patch';
+import { SimpleHttpPut } from './simple-http-put';
+import { SimpleHttpPost } from './simple-http-post';
 
 const API_HOST = '';
 
@@ -59,7 +59,7 @@ export class ExampleService {
     endpoint: 'entities'
   });
 
-  delete: SimpleHttpDelete = new SimpleHttpDelete({
+  delete: SimpleHttpDelete<Entity> = new SimpleHttpDelete<Entity>({
     http: this.http,
     host: API_HOST,
     service: this.service,
