@@ -1,6 +1,6 @@
 {
-  "name": "@sneveil/simple-http",
-  "version": "0.1.0",
+  "name": "sneveil-simple-http",
+  "version": "0.1.1",
   "description": "A simple Angular library for managing HTTP calls to an API, including loading, error handling, and request management, all managed by a single object.",
   "keywords": [
     "angular",
@@ -11,10 +11,10 @@
     "sneveil",
     "simple"
   ],
-  "author": "@sneveil",
+  "author": "sneveil",
   "peerDependencies": {
-    "@angular/common": "^17.0.0",
-    "@angular/core": "^17.0.0",
+    "@angular/common": "^19.0.0 || ^20.0.0 || ^21.0.0",
+    "@angular/core": "^19.0.0 || ^20.0.0 || ^21.0.0",
     "rxjs": ">=7.0.0"
   },
   "dependencies": {
@@ -23,8 +23,5 @@
   "sideEffects": false,
   "publishConfig": {
     "access": "public"
-  },
-  "hooks": {
-    "after:bump": "node -e \"const fs=require('fs');const p=require('./projects/simple-http/package.json');p.version=require('./package.json').version;fs.writeFileSync('./projects/simple-http/package.json',JSON.stringify(p,null,2)+'\\n')\" && npm run build:lib"
-  },
+  }
 }

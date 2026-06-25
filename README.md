@@ -1,8 +1,8 @@
-# @sneveil/simple-http
+# sneveil/simple-http
 
-[![npm version](https://img.shields.io/npm/v/@sneveil/simple-http.svg)](https://www.npmjs.com/package/@sneveil/simple-http)
+[![npm version](https://img.shields.io/npm/v/sneveil/simple-http.svg)](https://www.npmjs.com/package/sneveil/simple-http)
 [![CI](https://github.com/sneveil/simple-http/actions/workflows/ci.yml/badge.svg)](https://github.com/sneveil/simple-http/actions/workflows/ci.yml)
-[![npm downloads](https://img.shields.io/npm/dm/@sneveil/simple-http.svg)](https://www.npmjs.com/package/@sneveil/simple-http)
+[![npm downloads](https://img.shields.io/npm/dm/sneveil/simple-http.svg)](https://www.npmjs.com/package/sneveil/simple-http)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 A simple Angular library for managing HTTP calls to an API, including loading, error handling, and request management, all managed by a single object.
@@ -10,7 +10,7 @@ A simple Angular library for managing HTTP calls to an API, including loading, e
 ## Installation
 
 \`\`\`bash
-npm install @sneveil/simple-http
+npm install sneveil/simple-http
 \`\`\`
 
 ## Prérequis
@@ -21,7 +21,7 @@ npm install @sneveil/simple-http
 ## Utilisation rapide
 
 \`\`\`typescript
-import { SimpleHttpModule } from '@sneveil/simple-http';
+import { SimpleHttpModule } from 'sneveil/simple-http';
 
 @NgModule({
   imports: [SimpleHttpModule.forRoot({ baseUrl: 'https://api.example.com' })]

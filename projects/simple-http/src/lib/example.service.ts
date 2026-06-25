@@ -1,12 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { SimpleHttp } from './request/simple-http';
-import { SimpleHttpList } from './request/simple-http-list';
-import { SimpleHttpGet } from './request/simple-http-get';
-import { SimpleHttpDelete } from './request/simple-http-delete';
-import { SimpleHttpPatch } from './request/simple-http-patch';
-import { SimpleHttpPut } from './request/simple-http-put';
-import { SimpleHttpPost } from './request/simple-http-post';
+import { SimpleHttp, SimpleHttpDelete, SimpleHttpGet, SimpleHttpList, SimpleHttpPatch, SimpleHttpPost, SimpleHttpPut } from './simple-http';
 
 const API_HOST = '';
 
@@ -15,51 +9,51 @@ const API_HOST = '';
 })
 export class ExampleService {
   private http: HttpClient = inject(HttpClient);
-  private service: string = '/the-service';
+  private service = '/the-service';
 
-  entity: SimpleHttp<Entity> = new SimpleHttp({
+  entity: SimpleHttp<Entity> = new SimpleHttp<Entity>({
     http: this.http,
     host: API_HOST,
     service: this.service,
     endpoint: 'entities'
   });
 
-  getAll: SimpleHttpList<Entity> = new SimpleHttpList({
+  getAll: SimpleHttpList<Entity> = new SimpleHttpList<Entity>({
     http: this.http,
     host: API_HOST,
     service: this.service,
     endpoint: 'entities'
   });
 
-  get: SimpleHttpGet<Entity> = new SimpleHttpGet({
+  get: SimpleHttpGet<Entity> = new SimpleHttpGet<Entity>({
     http: this.http,
     host: API_HOST,
     service: this.service,
     endpoint: 'entities'
   });
 
-  post: SimpleHttpPost<Entity> = new SimpleHttpPost({
+  post: SimpleHttpPost<Entity> = new SimpleHttpPost<Entity>({
     http: this.http,
     host: API_HOST,
     service: this.service,
     endpoint: 'entities'
   });
 
-  put: SimpleHttpPut<Entity> = new SimpleHttpPut({
+  put: SimpleHttpPut<Entity> = new SimpleHttpPut<Entity>({
     http: this.http,
     host: API_HOST,
     service: this.service,
     endpoint: 'entities'
   });
 
-  patch: SimpleHttpPatch<Entity> = new SimpleHttpPatch({
+  patch: SimpleHttpPatch<Entity> = new SimpleHttpPatch<Entity>({
     http: this.http,
     host: API_HOST,
     service: this.service,
     endpoint: 'entities'
   });
 
-  delete: SimpleHttpDelete = new SimpleHttpDelete({
+  delete: SimpleHttpDelete<Entity> = new SimpleHttpDelete<Entity>({
     http: this.http,
     host: API_HOST,
     service: this.service,
@@ -70,4 +64,6 @@ export class ExampleService {
 }
 
 interface Entity {
+  id: number,
+  title: string
 }

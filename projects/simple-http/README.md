@@ -1,64 +1,122 @@
-# SimpleHttpComponent
+# sneveil-simple-http
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.0.
+[![npm version](https://img.shields.io/npm/v/sneveil-simple-http.svg)](https://www.npmjs.com/package/sneveil-simple-http)
+[![CI](https://github.com/sneveil/simple-http/actions/workflows/ci.yml/badge.svg)](https://github.com/sneveil/simple-http/actions/workflows/ci.yml)
+[![npm downloads](https://img.shields.io/npm/dm/sneveil-simple-http.svg)](https://www.npmjs.com/package/sneveil-simple-http)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## Code scaffolding
+A simple Angular library for managing HTTP calls to an API, including loading, error handling, and request management, all managed by a single object.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Installation
 
 ```bash
-ng generate --help
+npm install sneveil-simple-http
 ```
 
-## Building
+## Prerequisites
 
-To build the library, run:
+- Angular >= 19.0.0
+- RxJS >= 7.0.0
 
-```bash
-ng build simple-http
+Enable `HttpClient` in your app (standalone):
+
+```typescript
+import { provideHttpClient } from '@angular/common/http';
+
+export const appConfig: ApplicationConfig = {
+  providers: [provideHttpClient()],
+};
 ```
 
-This command will compile your project, and the build artifacts will be placed in the `dist/` directory.
+## Quick start
 
-### Publishing the Library
+Import the HTTP helper classes from the package and use them inside **your own** Angular service:
 
-Once the project is built, you can publish your library by following these steps:
+```typescript
+import { inject, Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import {
+  SimpleHttp,
+  SimpleHttpGet,
+  SimpleHttpList,
+  SimpleHttpPost,
+} from 'sneveil-simple-http';
 
-1. Navigate to the `dist` directory:
+@Injectable({ providedIn: 'root' })
+export class EntityService {
+  private http = inject(HttpClient);
 
-   ```bash
-   cd dist/simple-http
-   ```
+  entities = new SimpleHttpList<Entity>({
+    http: this.http,
+    host: 'https://api.example.com',
+    service: '/api',
+    endpoint: 'entities',
+  });
 
-2. Run the `npm publish` command to publish your library to the npm registry:
-   ```bash
-   npm publish
-   ```
+  entity = new SimpleHttpGet<Entity>({
+    http: this.http,
+    host: 'https://api.example.com',
+    service: '/api',
+    endpoint: 'entities',
+  });
 
-## Running unit tests
+  create = new SimpleHttpPost<Entity>({
+    http: this.http,
+    host: 'https://api.example.com',
+    service: '/api',
+    endpoint: 'entities',
+  });
+}
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
+interface Entity {
+  id: number;
+  title: string;
+}
 ```
 
-## Running end-to-end tests
+See `src/lib/example.service.ts` in this repository for a full CRUD example.
 
-For end-to-end (e2e) testing, run:
+## Public API
 
-```bash
-ng e2e
-```
+Everything below is exported from `sneveil-simple-http`:
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+| Export | Description |
+|--------|-------------|
+| `SimpleHttp` | Full CRUD helper |
+| `SimpleHttpList` | GET list |
+| `SimpleHttpGet` | GET one |
+| `SimpleHttpPost` | POST |
+| `SimpleHttpPut` | PUT |
+| `SimpleHttpPatch` | PATCH |
+| `SimpleHttpDelete` | DELETE |
+| `BaseHttp` | Base class for custom helpers |
+| `SimpleLoading` | Loading state (`loading$`) |
+| `SimpleMessage` | Status / error / success messages |
+| `SimplePersist` | Local storage helper |
+| `SimpleObservable` | Single-value observable wrapper |
+| `SimpleListObservable` | List observable wrapper |
+| `SimpleModel` | Config type (`http`, `host`, `service`, `endpoint`) |
 
-## Additional Resources
+Each HTTP helper exposes:
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- `loading$` — request in progress
+- `message.status$`, `message.error$`, `message.success$` — response feedback
+
+## Configuration (`SimpleModel`)
+
+| Option | Type | Description |
+|--------|------|-------------|
+| `http` | `HttpClient` | Injected Angular HTTP client |
+| `host` | `string` | API base URL (e.g. `https://api.example.com`) |
+| `service` | `string` | Optional path prefix (e.g. `/api`) |
+| `endpoint` | `string` | Resource path (e.g. `entities`) |
+
+## Publish to npm
+
+1. Bump version: `npm run release:patch` (or `minor` / `major`)
+2. Push the tag: `git push && git push --tags`
+3. GitHub Actions publishes `dist/simple-http` to npm as `sneveil-simple-http`
+
+## License
+
+MIT © Sneveil

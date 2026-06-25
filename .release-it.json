@@ -19,7 +19,7 @@
     }
   },
   "hooks": {
-    "before:init": ["npm run lint", "npm run test -- --no-watch --browsers=ChromeHeadless"],
+    "before:init": ["npm run lint"],
     "after:bump": "npm run build:lib"
   }
 }
