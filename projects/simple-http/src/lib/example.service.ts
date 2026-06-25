@@ -1,12 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { SimpleHttp } from './simple-http';
-import { SimpleHttpList } from './simple-http-list';
-import { SimpleHttpGet } from './simple-http-get';
-import { SimpleHttpDelete } from './simple-http-delete';
-import { SimpleHttpPatch } from './simple-http-patch';
-import { SimpleHttpPut } from './simple-http-put';
-import { SimpleHttpPost } from './simple-http-post';
+import { SimpleHttp, SimpleHttpDelete, SimpleHttpGet, SimpleHttpList, SimpleHttpPatch, SimpleHttpPost, SimpleHttpPut } from './simple-http';
 
 const API_HOST = '';
 
