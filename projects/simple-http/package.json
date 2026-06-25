@@ -1,6 +1,6 @@
 {
   "name": "sneveil-simple-http",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A simple Angular library for managing HTTP calls to an API, including loading, error handling, and request management, all managed by a single object.",
   "keywords": [
     "angular",
